@@ -1,1 +1,90 @@
+clang version 7.0.0-3~ubuntu0.18.04.1 (tags/RELEASE_700/final)
+ gcc -g p3original.c
+ ./a.out
+Enter the number1
+1 is not  a composite number 
+ ./a.out
+Enter the number12
+12 is  a composite number 
+ gdb a.out
+GNU gdb (Ubuntu 8.1.1-0ubuntu1) 8.1.1
+Copyright (C) 2018 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.  Type "show copying"
+and "show warranty" for details.
+This GDB was configured as "x86_64-linux-gnu".
+Type "show configuration" for configuration details.
+For bug reporting instructions, please see:
+<http://www.gnu.org/software/gdb/bugs/>.
+Find the GDB manual and other documentation resources online at:
+<http://www.gnu.org/software/gdb/documentation/>.
+For help, type "help".
+Type "apropos word" to search for commands related to "word"...
+Reading symbols from a.out...done.
+(gdb) b main
+Breakpoint 1 at 0x7f9: file p3original.c, line 34.
+(gdb) r
+Starting program: /home/runner/ppa-IA2-practice2-5/a.out 
+warning: Error disabling address space randomization: Operation not permitted
 
+Breakpoint 1, main () at p3original.c:34
+34      a=input_number();
+(gdb) s
+input_number () at p3original.c:3
+3   {
+(gdb) n
+5     printf("Enter the number");
+(gdb) n
+6     scanf("%d",&n);
+(gdb) n
+Enter the number2
+7     return n;
+(gdb) n
+9   }
+(gdb) n
+main () at p3original.c:35
+35      b=is_composite(a);
+(gdb) s
+is_composite (n=2) at p3original.c:12
+12    int i,c=0;
+(gdb) n
+13    for(i=1;i<=n;i++)
+(gdb) n
+15      if(n %i ==0)
+(gdb) n
+16      c++;
+(gdb) n
+13    for(i=1;i<=n;i++)
+(gdb) n
+15      if(n %i ==0)
+(gdb) n
+16      c++;
+(gdb) n
+13    for(i=1;i<=n;i++)
+(gdb) n
+19    return c;
+(gdb) n
+20  }
+(gdb) n
+main () at p3original.c:36
+36      output(a,b);
+(gdb) s
+output (n=2, composite=2) at p3original.c:26
+26      if(composite>2)
+(gdb) n
+29      printf("%d is not  a composite number",n);
+(gdb) n
+30    }
+(gdb) n
+main () at p3original.c:37
+37      return 0;
+(gdb) n
+38    }
+(gdb) n
+__libc_start_main (main=0x55df898007f1 <main>, argc=1, argv=0x7fff6f31dff8, 
+    init=<optimized out>, fini=<optimized out>, rtld_fini=<optimized out>, 
+    stack_end=0x7fff6f31dfe8) at ../csu/libc-start.c:344
+344 ../csu/libc-start.c: No such file or directory.
+(gdb) n
+2 is not  a composite number[Inferior 1 (process 153) exited normally]
